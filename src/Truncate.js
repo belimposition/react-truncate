@@ -146,10 +146,12 @@ export default class Truncate extends Component {
         ].join(' ');
 
         canvasContext.font = font;
-
-        this.setState({
-            targetWidth
-        }, callback);
+        // TimeOut костыль, чтобы рендерился учитывая шрифт
+        setTimeout(() => {
+            this.setState({
+                targetWidth
+            }, callback);
+        }, 50);
     }
 
     measureWidth(text) {
